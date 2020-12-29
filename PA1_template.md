@@ -73,6 +73,7 @@ plot_steps = total_steps_daily %>%
            x = '')+
       theme_minimal()
 
+ggsave('plot_steps.png',plot_steps)
 plot_steps
 ```
 
@@ -118,6 +119,14 @@ plot_steps_interval = steps_by_interval %>%
            x = 'interval (mins)')+
       theme_minimal()
 
+ggsave('plot_steps_interval.png',plot_steps_interval)
+```
+
+```
+## Saving 7 x 5 in image
+```
+
+```r
 plot_steps_interval
 ```
 
@@ -192,6 +201,7 @@ plot_steps_complete = total_steps_daily_complete %>%
            x = '')+
       theme_minimal()
 
+ggsave('plot_steps_complete.png',plot_steps_complete)
 plot_steps_complete
 ```
 
@@ -249,7 +259,7 @@ Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minut
 Plot the graph
 
 ```r
-by_week_data %>%
+weekday_weekend_plot = by_week_data %>%
       group_by(interval, day_type) %>%
       summarise(total_steps = sum(steps, na.rm = TRUE)) %>%
       ggplot(aes(interval, total_steps))+
@@ -260,6 +270,10 @@ by_week_data %>%
            y = 'total steps',
            color = 'day type')+
             theme(legend.position = 'none')
+
+ggsave('weekday_weekend_plot.png',weekday_weekend_plot)
+
+weekday_weekend_plot
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
